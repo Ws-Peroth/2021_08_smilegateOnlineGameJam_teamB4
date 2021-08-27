@@ -6,6 +6,7 @@ namespace lws
 {
     public class PlayerMove : MonoBehaviour
     {
+        public Animator playerAnimator;
         public Rigidbody2D playerRigidbody;
         public SpriteRenderer playerSpriteRenderer;
 
@@ -36,11 +37,13 @@ namespace lws
 
             // ↑ 점프, 바닥체크
             isGround = Physics2D.OverlapCircle((Vector2)transform.position
-                + new Vector2(0, -0.5f), 0.07f, 1 << LayerMask.NameToLayer("Ground"));
+                + new Vector2(0, -0.9f), 0.07f, 1 << LayerMask.NameToLayer("Ground"));
 
 
             if (Input.GetKeyDown(KeyCode.UpArrow) && isGround)
             {
+                playerAnimator.SetBool("isMove", false);
+
                 playerRigidbody.velocity = new Vector2(playerRigidbody.velocity.x, 0);
                 playerRigidbody.AddForce(Vector2.up * jumpPower);
             }
@@ -50,17 +53,23 @@ namespace lws
         {
             if (Input.GetKey(KeyCode.RightArrow))
             {
+                playerAnimator.SetBool("isMove", true);
+
                 playerRigidbody.velocity = new Vector2(speed, playerRigidbody.velocity.y);
                 playerSpriteRenderer.flipX = false;
 
             }
             else if (Input.GetKey(KeyCode.LeftArrow))
             {
+                playerAnimator.SetBool("isMove", true);
+
                 playerRigidbody.velocity = new Vector2(-speed, playerRigidbody.velocity.y);
                 playerSpriteRenderer.flipX = true;
             }
             else
             {
+                playerAnimator.SetBool("isMove", false);
+
                 playerRigidbody.velocity = new Vector2(0, playerRigidbody.velocity.y);
             }
         }
