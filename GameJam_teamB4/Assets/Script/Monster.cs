@@ -6,6 +6,7 @@ public class Monster : MonoBehaviour
 {
     float thinkTime = 2f;
     public Vector3 dir = Vector3.left;
+    public int hp = 100;
 
     // Start is called before the first frame update
     void Start()
@@ -18,6 +19,15 @@ public class Monster : MonoBehaviour
     {
         checkFront();
         Move();
+
+        if (hp <= 0)
+        {
+            // 50% È®·ü·Î ±ÛÀÚ Å‰µæ.
+            if (Random.Range(0, 2) == 1)
+            {
+                WordUI.Instance.getWord(Random.Range(0, 6));
+            }
+        }
     }
 
     private void checkFront()
@@ -36,6 +46,7 @@ public class Monster : MonoBehaviour
     {
         this.transform.position += dir * Time.deltaTime;
     }
+
     private void Think()
     {
         thinkTime = Random.Range(1f, 3f);
