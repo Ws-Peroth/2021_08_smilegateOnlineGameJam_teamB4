@@ -8,20 +8,28 @@ namespace lws
     public class Player : PlayerMove
     {
         [SerializeField] Slider hpBar;
-        public float hp = 100;
         [SerializeField] private bool isAttack;
         [SerializeField] private bool isSkill;
 
         [SerializeField] private GameObject skillEffect;
         [SerializeField] private GameObject attackEffect;
 
+
+        public int skillDmg;
+        public int attackDmg;
+        public bool isHit;
+        public float hp = 100;
+
         public override void Start()
         {
             base.Start();
+            skillDmg = 30;
+            attackDmg = 10;
 
-            hp = 100;
             isAttack = false;
             isSkill = false;
+            isHit = false;
+            hp = 100;
         }
 
         public void Update()
@@ -68,8 +76,13 @@ namespace lws
                 if (isGround) playerRigidbody.velocity = Vector2.zero;
             }
         }
+        public void OnAttackRange(Collider2D enemy)
+        {
+            if (isAttack) CommonAttackHit(enemy);
+            else if (isSkill) SkillAttackHit(enemy);
+        }
 
-        public void CommonAttackHit()
+        public void CommonAttackHit(Collider2D monster)
         {
             if (!attackEffect.activeSelf)
             {
@@ -77,18 +90,21 @@ namespace lws
 
                 if (playerSpriteRenderer.flipX)
                     attackEffect.transform.localPosition
-                        = transform.localPosition + new Vector3(-0.87f, 0.33f, 0);
+                        = new Vector3(-0.87f, 0.33f, 0);
                 else
                     attackEffect.transform.localPosition
-                        = transform.localPosition + new Vector3(0.87f, 0.33f, 0);
+                        = new Vector3(0.87f, 0.33f, 0);
             }
+
+            SetDamage(monster, attackDmg);
         }
-        public void SkillAttackHit()
+
+        public void SkillAttackHit(Collider2D monster)
         {
             skillEffect.SetActive(true);
 
             skillEffect.transform.localPosition 
-                = transform.localPosition + new Vector3(0, 0.33f, 0);
+                = new Vector3(0, 0.33f, 0);
 
             if (playerSpriteRenderer.flipX)
                 skillEffect.transform.rotation 
@@ -96,6 +112,14 @@ namespace lws
             else
                 skillEffect.transform.rotation 
                     = Quaternion.Euler(new Vector3(0, 0, 0));
+
+            SetDamage(monster, skillDmg);
+        }
+
+        private void SetDamage(Collider2D enemy, int dmg)
+        {
+
+            enemy.GetComponent<Monster>().getDamage(attackDmg);
         }
 
         public void AttackEnd()
