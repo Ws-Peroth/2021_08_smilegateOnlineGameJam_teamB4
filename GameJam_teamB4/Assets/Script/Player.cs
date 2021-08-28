@@ -10,10 +10,8 @@ namespace lws
         [SerializeField] Slider hpBar;
         [SerializeField] private bool isAttack;
         [SerializeField] private bool isSkill;
-
         [SerializeField] private GameObject skillEffect;
         [SerializeField] private GameObject attackEffect;
-
 
         public int skillDmg;
         public int attackDmg;
@@ -89,11 +87,11 @@ namespace lws
                 attackEffect.SetActive(true);
 
                 if (playerSpriteRenderer.flipX)
-                    attackEffect.transform.localPosition
-                        = new Vector3(-0.87f, 0.33f, 0);
+                    skillEffect.transform.rotation
+                        = Quaternion.Euler(new Vector3(0, 0, -90));
                 else
-                    attackEffect.transform.localPosition
-                        = new Vector3(0.87f, 0.33f, 0);
+                    skillEffect.transform.rotation
+                        = Quaternion.Euler(new Vector3(0, 180, -90));
             }
 
             SetDamage(monster, attackDmg);
@@ -131,6 +129,16 @@ namespace lws
         {
             isSkill = false;
             playerAnimator.SetBool("isSkill", false);
+        }
+
+        public void GetDamage(float dmg)
+        {
+            hp -= dmg;
+
+            if(hp <= 0)
+            {
+
+            }
         }
     }
 }
