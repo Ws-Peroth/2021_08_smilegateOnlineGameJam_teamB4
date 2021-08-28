@@ -8,11 +8,11 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - CameraCollider
   - Water
   - UI
   - Ground
-  - 
+  - Player
   - Platform
   - 
   - 
