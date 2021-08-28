@@ -1,0 +1,22 @@
+[
+  {
+    "txt": "Test-1",
+    "member": 0
+  },
+  {
+    "txt": "Hello",
+    "member": 0
+  },
+  {
+    "txt": "World",
+    "member": 1
+  },
+  {
+    "txt": "SHAAAAAAAAAAAAAAAAAAAK",
+    "member": 1
+  },
+  {
+    "txt": "YUDANZZA",
+    "member": 1
+  }
+]
