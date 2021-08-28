@@ -13,6 +13,7 @@ namespace lws
         [SerializeField] private bool isSkill;
         [SerializeField] private GameObject skillEffect;
         [SerializeField] private GameObject attackEffect;
+        [SerializeField] private AudioSource audioSource;
 
         public int skillDmg;
         public int attackDmg;
@@ -59,6 +60,7 @@ namespace lws
 
                 Debug.Log("Call Effect : Attack");
                 playerAnimator.SetBool("isAttack", true);
+                audioSource.Play();
             }
             if (isAttack)
             {
@@ -74,6 +76,7 @@ namespace lws
                 isSkill = true;
                 Debug.Log("Call Effect : Skill");
                 playerAnimator.SetBool("isSkill", true);
+                audioSource.Play();
             }
             if (isSkill)
             {

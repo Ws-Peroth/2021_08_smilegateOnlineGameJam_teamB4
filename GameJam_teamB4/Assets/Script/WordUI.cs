@@ -29,8 +29,10 @@ public class WordUI : MonoBehaviour
     }
 
     public GameObject[] words;
+    public AudioSource audioSource;
 
     public int wordCount = 0;
+
 
 
     // Start is called before the first frame update
@@ -52,6 +54,8 @@ public class WordUI : MonoBehaviour
 
         words[index].SetActive(true);
         wordCount++;
+
+        audioSource.Play();
 
         if (wordCount >= 5)
         {
