@@ -387,7 +387,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0.0000038148, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1920, y: 513.37}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &307210206
@@ -433,7 +433,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 307210207}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1939165235}
+        m_TargetAssemblyTypeName: lws.TalkSystem, Assembly-CSharp
+        m_MethodName: NextButtonDown
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &307210207
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -640,8 +652,8 @@ RectTransform:
   m_Children:
   - {fileID: 1441634261}
   - {fileID: 307210205}
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_Father: {fileID: 1939165236}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -738,7 +750,7 @@ GameObject:
   - component: {fileID: 1093149540}
   - component: {fileID: 1093149539}
   m_Layer: 0
-  m_Name: player_TalkMotion
+  m_Name: Speaker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -803,11 +815,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1093149538}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5, y: 1, z: 0}
+  m_LocalPosition: {x: -6, y: 0, z: 0}
   m_LocalScale: {x: 2.5, y: 2.5, z: 0}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_Father: {fileID: 1939165236}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1343547809
 GameObject:
@@ -994,6 +1006,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7203a18237675c4198abf36f92db429, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speakerName: {fileID: 1040298456}
+  dialogue: {fileID: 1343547811}
+  charDelay: 0
+  speakerSprites:
+  - {fileID: 21300000, guid: 7bc41957796861548979cdde2ceef59a, type: 3}
+  - {fileID: 21300000, guid: 6cde58c68a5e77b4d97e0b53d3914170, type: 3}
+  speaker: {fileID: 1093149539}
+  isShowing: 0
 --- !u!4 &1939165236
 Transform:
   m_ObjectHideFlags: 0
@@ -1002,11 +1022,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1939165234}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.4987304, y: 0.041920185, z: 56.66776}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1093149540}
+  - {fileID: 601015789}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1962787349
 GameObject:

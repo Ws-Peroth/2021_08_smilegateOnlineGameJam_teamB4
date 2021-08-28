@@ -11,37 +11,79 @@ namespace lws {
     {
         [SerializeField] private Text speakerName;
         [SerializeField] private Text dialogue;
+        [SerializeField] private Sprite[] speakerSprites;
+        [SerializeField] private SpriteRenderer speaker;
         [SerializeField] private float charDelay;
 
-        Queue<TalkInformation> talks = new Queue<TalkInformation>();
-
-        void Start()
+        private Queue<TalkInformation> talks = new Queue<TalkInformation>();
+        private TalkInformation temp;
+        private IEnumerator showCharWithDelayCoroutine;
+        private bool isShowing;
+        private string[] names = { "AAA", "BBB"};
+        private void Start()
         {
-            charDelay = 0.1f;
-
+            isShowing = false;
+            charDelay = 0.05f;
+            
             var loadJson = Resources.Load("Dialogue") as TextAsset;
             talks = JsonConvert.DeserializeObject<Queue<TalkInformation>>(loadJson.ToString());
+
+            GetStartSignal();
+            
         }
 
-        public void GetStartSignal()
+        public void NextButtonDown()
+        {
+            if (isShowing)
+                GetSkipSignal();
+            else
+                GetStartSignal();
+        }
+
+        private void GetStartSignal()
         {
             if(talks.Count > 0)
             {
-                TalkInformation temp = talks.Dequeue();
-                StartCoroutine(ShowChar(temp.txt));
+                temp = talks.Dequeue();
+                speakerName.text = names[temp.member];
+                SetSpeaker(temp.member);
+                showCharWithDelayCoroutine = ShowChar(temp.txt);
+                StartCoroutine(showCharWithDelayCoroutine);
             }
+            else TalkEnd();
+        }
+
+        private void SetSpeaker(int member)
+        {
+            speaker.sprite = speakerSprites[member];
+        }
+
+        public void TalkEnd()
+        {
+            Debug.Log("Talk End");
+            gameObject.SetActive(false);
+        }
+
+        private void GetSkipSignal()
+        {
+            StopCoroutine(showCharWithDelayCoroutine);
+            dialogue.text = temp.txt;
+            isShowing = false;
         }
 
         private IEnumerator ShowChar(string txt)
         {
-            int index = 0;
+            isShowing = true;
+
             dialogue.text = "";
 
-            while (txt[index] != '\0')
+            for(int i = 0; i < txt.Length; i++)
             {
-                dialogue.text += txt[index];
+                dialogue.text += txt[i];
                 yield return new WaitForSeconds(charDelay);
             }
+
+            isShowing = false;
         }
     }
 }
