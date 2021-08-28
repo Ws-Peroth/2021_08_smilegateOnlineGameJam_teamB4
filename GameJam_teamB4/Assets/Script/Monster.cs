@@ -17,6 +17,10 @@ public class Monster : MonoBehaviour
 
     public bool isAttack;
 
+    public GameObject HpObj = null;
+    private int nowHp;
+    private float HpObjLength;
+
     public MonsterRespawn respawn;
 
     // Start is called before the first frame update
@@ -24,6 +28,9 @@ public class Monster : MonoBehaviour
     {
         isAttack = false;
         Think();
+
+        nowHp = hp;
+        HpObjLength = HpObj.transform.localScale.x;
     }
 
     // Update is called once per frame
@@ -100,6 +107,13 @@ public class Monster : MonoBehaviour
         hp -= damage;
 
         Debug.Log($"{gameObject.name} : Get Dmg");
+
+        nowHp -= damage;
+        Vector3 scale = HpObj.transform.localScale;
+        scale.x -= (HpObjLength / hp) * damage;
+        if (scale.x <= 0)
+            scale.x = 0.2f;
+        HpObj.transform.localScale = scale;
 
         if (hp <= 0)
         {
