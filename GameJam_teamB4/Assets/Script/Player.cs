@@ -21,6 +21,8 @@ namespace lws
         public override void Start()
         {
             base.Start();
+            hpBar.gameObject.SetActive(true);
+
             skillDmg = 30;
             attackDmg = 10;
 
@@ -137,8 +139,14 @@ namespace lws
 
             if(hp <= 0)
             {
-
+                Die();
             }
+        }
+
+        public void Die()
+        {
+            gameObject.SetActive(false);
+            hpBar.gameObject.SetActive(false);
         }
     }
 }

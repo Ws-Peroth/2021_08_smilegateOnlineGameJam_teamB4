@@ -8,6 +8,6 @@ public class HpUIFollowPlayer : MonoBehaviour
 
     void Update()
     {
-        transform.localPosition = player.localPosition;
+        transform.localPosition = player.localPosition + new Vector3(0, 130, 0);
     }
 }

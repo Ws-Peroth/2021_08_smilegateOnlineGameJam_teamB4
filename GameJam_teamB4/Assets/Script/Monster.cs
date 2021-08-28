@@ -13,12 +13,16 @@ public class Monster : MonoBehaviour
     public SpriteRenderer monsterSpriteRenderer;
     public bool attack = false;
     public float power = 10f;
+    public float attackDelay = 1f;
+
+    public bool isAttack;
 
     public MonsterRespawn respawn;
 
     // Start is called before the first frame update
     void Start()
     {
+        isAttack = false;
         Think();
     }
 
@@ -34,6 +38,7 @@ public class Monster : MonoBehaviour
         else
         {
             Vector3 distance = this.transform.position - target.transform.position;
+
             if ( distance.x < 0)
             {
                 monsterSpriteRenderer.flipX = true;
@@ -44,7 +49,10 @@ public class Monster : MonoBehaviour
             }
 
             target.GetComponent<Player>().GetDamage(power);
+            Debug.Log("Attack Player!");
             animator.SetTrigger("tryAttack");
+
+            attack = false;
         }
     }
 
@@ -76,7 +84,7 @@ public class Monster : MonoBehaviour
 
     }
 
-    private void Think()
+    public void Think()
     {
         thinkTime = Random.Range(1f, 3f);
 
@@ -109,6 +117,8 @@ public class Monster : MonoBehaviour
         target = player.gameObject;
         CancelInvoke("Think");
         attack = true;
+
+        Debug.Log("attack to true");
     }
 
     //private void OnTriggerEnter2D(Collider2D other)
@@ -123,14 +133,4 @@ public class Monster : MonoBehaviour
     //}
 
 
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.tag == "Player")
-        {
-            target = null;
-            //CancelInvoke("Shoot");
-            attack = false;
-            Think();
-        }
-    }
 }
