@@ -29,7 +29,7 @@ public class Monster : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        checkFront();
+        //checkFront();
 
         if (!attack)
         {

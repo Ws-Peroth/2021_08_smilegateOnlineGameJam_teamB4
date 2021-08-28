@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 117431610763921576}
   - component: {fileID: 4260808807615902918}
   - component: {fileID: 3882571696996373573}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: Range
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -251,6 +251,9 @@ MonoBehaviour:
   monsterSpriteRenderer: {fileID: 8748165362293201976}
   attack: 0
   power: 10
+  attackDelay: 1
+  isAttack: 0
+  respawn: {fileID: 0}
 --- !u!95 &8748165362293201979
 Animator:
   serializedVersion: 3
