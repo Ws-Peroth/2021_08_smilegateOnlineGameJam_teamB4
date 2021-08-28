@@ -108,10 +108,10 @@ namespace lws
 
             if (playerSpriteRenderer.flipX)
                 skillEffect.transform.rotation 
-                    = Quaternion.Euler(new Vector3(0, 180, 0));
+                    = Quaternion.Euler(new Vector3(0, 0, -90));
             else
                 skillEffect.transform.rotation 
-                    = Quaternion.Euler(new Vector3(0, 0, 0));
+                    = Quaternion.Euler(new Vector3(0, 180, -90));
 
             SetDamage(monster, skillDmg);
         }
