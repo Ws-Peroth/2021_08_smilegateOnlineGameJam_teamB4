@@ -1,3 +1,4 @@
+using lws;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,7 +10,9 @@ public class Monster : MonoBehaviour
     public int hp = 100;
     public Animator animator;
     public GameObject target;
+    public SpriteRenderer monsterSpriteRenderer;
     public bool attack = false;
+    public float power = 10f;
 
     // Start is called before the first frame update
     void Start()
@@ -20,13 +23,8 @@ public class Monster : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        Vector3 scale = new Vector3(-dir.x, 1, 1);
-
-        if (scale.x == 0)
-            scale.x = this.transform.localScale.x;
-        this.transform.localScale = scale;
-
         checkFront();
+
         if (!attack)
         {
             Move();
@@ -36,17 +34,16 @@ public class Monster : MonoBehaviour
             Vector3 distance = this.transform.position - target.transform.position;
             if ( distance.x < 0)
             {
-                scale.x = -1;
+                monsterSpriteRenderer.flipX = true;
             }
             else
             {
-                scale.x = 1;
+                monsterSpriteRenderer.flipX = false;
             }
 
+            target.GetComponent<Player>().GetDamage(power);
             animator.SetTrigger("tryAttack");
         }
-
-        this.transform.localScale = scale;
     }
 
     private void checkFront()
@@ -104,16 +101,23 @@ public class Monster : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    public void OnAttackRange(Collider2D player)
     {
-        if (other.tag == "Player")
-        {
-            target = other.gameObject;
-            CancelInvoke("Think");
-            attack = true;
-            //Attack();
-        }
+        target = player.gameObject;
+        CancelInvoke("Think");
+        attack = true;
     }
+
+    //private void OnTriggerEnter2D(Collider2D other)
+    //{
+    //    if (other.tag == "Player")
+    //    {
+    //        target = other.gameObject;
+    //        CancelInvoke("Think");
+    //        attack = true;
+    //        //Attack();
+    //    }
+    //}
 
 
     private void OnTriggerExit2D(Collider2D other)
