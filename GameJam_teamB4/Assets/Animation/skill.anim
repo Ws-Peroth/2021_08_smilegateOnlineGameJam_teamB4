@@ -84,7 +84,7 @@ AnimationClip:
   - time: 0.41666666
     functionName: SkillEnd
     data: 
-    objectReferenceParameter: {fileID: 11500000, guid: bd17e62c30ef6c146920843e17db6614, type: 3}
+    objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
