@@ -21,6 +21,8 @@ public class Monster : MonoBehaviour
     private int nowHp;
     private float HpObjLength;
 
+    public AudioSource audioSource;
+
     public MonsterRespawn respawn;
 
     // Start is called before the first frame update
@@ -133,6 +135,8 @@ public class Monster : MonoBehaviour
         target = player.gameObject;
         CancelInvoke("Think");
         attack = true;
+
+        audioSource.Play();
 
         Debug.Log("attack to true");
     }
