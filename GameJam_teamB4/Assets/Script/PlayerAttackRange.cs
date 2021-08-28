@@ -8,7 +8,13 @@ namespace lws
     {
         [SerializeField] private Player player;
 
-        // Update is called once per frame
+        public bool attackDelayOn;
+
+        private void Start()
+        {
+            attackDelayOn = false;
+        }
+
         void Update()
         {
             SetRange();
@@ -28,11 +34,14 @@ namespace lws
 
         private void OnTriggerStay2D(Collider2D collision)
         {
+            Debug.Log("Trigger On");
+
             if (collision.gameObject.CompareTag("Enemy"))
             {
+                Debug.Log("Effect On");
                 player.OnAttackRange(collision);
             }
-        }
 
+        }
     }
 }

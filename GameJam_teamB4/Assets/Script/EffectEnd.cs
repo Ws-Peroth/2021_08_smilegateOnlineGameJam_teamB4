@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EffectEnd : MonoBehaviour
+namespace lws
 {
-    public void EndEffect()
+    public class EffectEnd : MonoBehaviour
     {
-        gameObject.SetActive(false);
+        public void EndEffect()
+        {
+            gameObject.SetActive(false);
+        }
     }
 }

@@ -32037,6 +32037,7 @@ MonoBehaviour:
   jumpPower: 10
   downSpeed: 0
   hpBar: {fileID: 1061228910}
+  range: {fileID: 4310444201456199551}
   isAttack: 0
   isSkill: 0
   skillEffect: {fileID: 7107345515515795535}
@@ -32045,6 +32046,7 @@ MonoBehaviour:
   attackDmg: 0
   isHit: 0
   hp: 100
+  attackDelay: 1
 --- !u!95 &4310444200568757470
 Animator:
   serializedVersion: 3
@@ -32187,6 +32189,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 4310444200568757469}
+  attackDelayOn: 0
 --- !u!114 &4896258291985824247
 MonoBehaviour:
   m_ObjectHideFlags: 0

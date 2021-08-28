@@ -99,6 +99,8 @@ public class Monster : MonoBehaviour
     {
         hp -= damage;
 
+        Debug.Log($"{gameObject.name} : Get Dmg");
+
         if (hp <= 0)
         {
             // 50% È®·ü·Î ±ÛÀÚ Å‰µæ.

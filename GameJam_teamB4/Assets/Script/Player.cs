@@ -8,6 +8,7 @@ namespace lws
     public class Player : PlayerMove
     {
         [SerializeField] Slider hpBar;
+        [SerializeField] private PlayerAttackRange range;
         [SerializeField] private bool isAttack;
         [SerializeField] private bool isSkill;
         [SerializeField] private GameObject skillEffect;
@@ -17,6 +18,8 @@ namespace lws
         public int attackDmg;
         public bool isHit;
         public float hp = 100;
+
+        public float attackDelay = 1f;
 
         public override void Start()
         {
@@ -54,6 +57,7 @@ namespace lws
             {
                 isAttack = true;
 
+                Debug.Log("Call Effect : Attack");
                 playerAnimator.SetBool("isAttack", true);
             }
             if (isAttack)
@@ -68,7 +72,7 @@ namespace lws
             if (!isSkill && Input.GetKey(KeyCode.X))
             {
                 isSkill = true;
-
+                Debug.Log("Call Effect : Skill");
                 playerAnimator.SetBool("isSkill", true);
             }
             if (isSkill)
@@ -84,8 +88,10 @@ namespace lws
 
         public void CommonAttackHit(Collider2D monster)
         {
-            if (!attackEffect.activeSelf)
+            if (!attackEffect.activeSelf && !range.attackDelayOn)
             {
+                range.attackDelayOn = true;
+
                 attackEffect.SetActive(true);
 
                 if (playerSpriteRenderer.flipX)
@@ -94,43 +100,60 @@ namespace lws
                 else
                     skillEffect.transform.rotation
                         = Quaternion.Euler(new Vector3(0, 180, -90));
+
+
+                SetDamage(monster, attackDmg);
             }
 
-            SetDamage(monster, attackDmg);
         }
 
         public void SkillAttackHit(Collider2D monster)
         {
-            skillEffect.SetActive(true);
+            if (!skillEffect.activeSelf && !range.attackDelayOn)
+            {
 
-            skillEffect.transform.localPosition 
-                = new Vector3(0, 0.33f, 0);
+                range.attackDelayOn = true;
 
-            if (playerSpriteRenderer.flipX)
-                skillEffect.transform.rotation 
-                    = Quaternion.Euler(new Vector3(0, 0, -90));
-            else
-                skillEffect.transform.rotation 
-                    = Quaternion.Euler(new Vector3(0, 180, -90));
+                skillEffect.SetActive(true);
 
-            SetDamage(monster, skillDmg);
+                skillEffect.transform.localPosition
+                    = new Vector3(0, 0.33f, 0);
+
+                if (playerSpriteRenderer.flipX)
+                    skillEffect.transform.rotation
+                        = Quaternion.Euler(new Vector3(0, 0, -90));
+                else
+                    skillEffect.transform.rotation
+                        = Quaternion.Euler(new Vector3(0, 180, -90));
+
+                SetDamage(monster, skillDmg);
+            }
         }
 
         private void SetDamage(Collider2D enemy, int dmg)
         {
             if (enemy.GetComponent<Monster>() != null)
-                enemy.GetComponent<Monster>().getDamage(attackDmg);
+                enemy.GetComponent<Monster>().getDamage(dmg);
         }
 
         public void AttackEnd()
         {
             isAttack = false;
+            range.attackDelayOn = false;
             playerAnimator.SetBool("isAttack", false);
         }
         public void SkillEnd()
         {
             isSkill = false;
+            range.attackDelayOn = false;
             playerAnimator.SetBool("isSkill", false);
+        }
+
+        public void AttackDelayEnd()
+        {
+            Debug.Log("Delay End");
+            range.attackDelayOn = false;
+            Debug.Log($"DelayON : {range.attackDelayOn }");
         }
 
         public void GetDamage(float dmg)
