@@ -30,7 +30,7 @@ public class WordUI : MonoBehaviour
 
     public GameObject[] words;
 
-    int wordCount = 0;
+    public int wordCount = 0;
 
 
     // Start is called before the first frame update

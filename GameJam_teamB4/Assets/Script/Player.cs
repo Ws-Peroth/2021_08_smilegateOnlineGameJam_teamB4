@@ -95,10 +95,10 @@ namespace lws
                 attackEffect.SetActive(true);
 
                 if (playerSpriteRenderer.flipX)
-                    skillEffect.transform.rotation
+                    attackEffect.transform.rotation
                         = Quaternion.Euler(new Vector3(0, 0, -90));
                 else
-                    skillEffect.transform.rotation
+                    attackEffect.transform.rotation
                         = Quaternion.Euler(new Vector3(0, 180, -90));
 
 
