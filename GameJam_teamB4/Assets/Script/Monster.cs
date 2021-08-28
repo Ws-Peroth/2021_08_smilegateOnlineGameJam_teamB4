@@ -7,6 +7,9 @@ public class Monster : MonoBehaviour
     float thinkTime = 2f;
     public Vector3 dir = Vector3.left;
     public int hp = 100;
+    public Animator animator;
+    public GameObject target;
+    public bool attack = false;
 
     // Start is called before the first frame update
     void Start()
@@ -17,17 +20,33 @@ public class Monster : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        checkFront();
-        Move();
+        Vector3 scale = new Vector3(-dir.x, 1, 1);
 
-        if (hp <= 0)
+        if (scale.x == 0)
+            scale.x = this.transform.localScale.x;
+        this.transform.localScale = scale;
+
+        checkFront();
+        if (!attack)
         {
-            // 50% È®·ü·Î ±ÛÀÚ Å‰µæ.
-            if (Random.Range(0, 2) == 1)
-            {
-                WordUI.Instance.getWord(Random.Range(0, 6));
-            }
+            Move();
         }
+        else
+        {
+            Vector3 distance = this.transform.position - target.transform.position;
+            if ( distance.x < 0)
+            {
+                scale.x = -1;
+            }
+            else
+            {
+                scale.x = 1;
+            }
+
+            animator.SetTrigger("tryAttack");
+        }
+
+        this.transform.localScale = scale;
     }
 
     private void checkFront()
@@ -45,6 +64,17 @@ public class Monster : MonoBehaviour
     private void Move()
     {
         this.transform.position += dir * Time.deltaTime;
+
+        // set animation
+        if (dir.x == 0)
+        {
+            animator.SetBool("isMoving", false);
+        }
+        else
+        {
+            animator.SetBool("isMoving", true);
+        }
+
     }
 
     private void Think()
@@ -56,5 +86,44 @@ public class Monster : MonoBehaviour
         dir.z = 0;
 
         Invoke("Think", thinkTime);
+    }
+
+    public void getDamage(int damage)
+    {
+        hp -= damage;
+
+        if (hp <= 0)
+        {
+            // 50% È®·ü·Î ±ÛÀÚ Å‰µæ.
+            if (Random.Range(0, 2) == 1)
+            {
+                WordUI.Instance.getWord(Random.Range(0, 6));
+            }
+
+            Destroy(this.gameObject);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Player")
+        {
+            target = other.gameObject;
+            CancelInvoke("Think");
+            attack = true;
+            //Attack();
+        }
+    }
+
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.tag == "Player")
+        {
+            target = null;
+            //CancelInvoke("Shoot");
+            attack = false;
+            Think();
+        }
     }
 }
