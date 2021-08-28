@@ -112,7 +112,7 @@ public class Monster : MonoBehaviour
         Vector3 scale = HpObj.transform.localScale;
         scale.x -= (HpObjLength / hp) * damage;
         if (scale.x <= 0)
-            scale.x = 0.2f;
+            scale.x = 0.1f;
         HpObj.transform.localScale = scale;
 
         if (hp <= 0)
