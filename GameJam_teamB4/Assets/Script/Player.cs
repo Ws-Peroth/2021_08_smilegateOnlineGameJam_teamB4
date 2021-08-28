@@ -12,6 +12,9 @@ namespace lws
         [SerializeField] private bool isAttack;
         [SerializeField] private bool isSkill;
 
+        [SerializeField] private GameObject skillEffect;
+        [SerializeField] private GameObject attackEffect;
+
         public override void Start()
         {
             base.Start();
@@ -62,9 +65,37 @@ namespace lws
             }
             if (isSkill)
             {
-                // 기존의 힘을 유지
                 if (isGround) playerRigidbody.velocity = Vector2.zero;
             }
+        }
+
+        public void CommonAttackHit()
+        {
+            if (!attackEffect.activeSelf)
+            {
+                attackEffect.SetActive(true);
+
+                if (playerSpriteRenderer.flipX)
+                    attackEffect.transform.localPosition
+                        = new Vector3(-0.87f, 0.33f, 0);
+                else
+                    attackEffect.transform.localPosition
+                        = new Vector3(0.87f, 0.33f, 0);
+            }
+        }
+        public void SkillAttackHit()
+        {
+            skillEffect.SetActive(true);
+
+            skillEffect.transform.localPosition 
+                = new Vector3(0, 0.33f, 0);
+
+            if (playerSpriteRenderer.flipX)
+                skillEffect.transform.rotation 
+                    = Quaternion.Euler(new Vector3(0, 180, 0));
+            else
+                skillEffect.transform.rotation 
+                    = Quaternion.Euler(new Vector3(0, 0, 0));
         }
 
         public void AttackEnd()
