@@ -116,8 +116,8 @@ namespace lws
 
         private void SetDamage(Collider2D enemy, int dmg)
         {
-
-            enemy.GetComponent<Monster>().getDamage(attackDmg);
+            if (enemy.GetComponent<Monster>() != null)
+                enemy.GetComponent<Monster>().getDamage(attackDmg);
         }
 
         public void AttackEnd()

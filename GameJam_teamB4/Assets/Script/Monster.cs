@@ -14,6 +14,8 @@ public class Monster : MonoBehaviour
     public bool attack = false;
     public float power = 10f;
 
+    public MonsterRespawn respawn;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -94,9 +96,10 @@ public class Monster : MonoBehaviour
             // 50% È®·ü·Î ±ÛÀÚ Å‰µæ.
             if (Random.Range(0, 2) == 1)
             {
-                WordUI.Instance.getWord(Random.Range(0, 6));
+                WordUI.Instance.getWord(Random.Range(0, 5));
             }
 
+            respawn.respawnMonster(this.transform.parent);
             Destroy(this.gameObject);
         }
     }
