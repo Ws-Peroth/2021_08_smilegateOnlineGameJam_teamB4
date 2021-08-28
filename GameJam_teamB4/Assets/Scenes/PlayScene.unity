@@ -25605,7 +25605,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 771326181}
   m_CullTransparentMesh: 1
-<<<<<<< Updated upstream
 --- !u!1001 &828741826
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25676,9 +25675,6 @@ PrefabInstance:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 72e5d8862e4d26745b9d8d50ac97570c, type: 3}
 --- !u!1 &842346554
-=======
---- !u!1 &909829728
->>>>>>> Stashed changes
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
