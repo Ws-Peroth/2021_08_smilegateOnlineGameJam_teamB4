@@ -77,10 +77,10 @@ namespace lws
 
                 if (playerSpriteRenderer.flipX)
                     attackEffect.transform.localPosition
-                        = new Vector3(-0.87f, 0.33f, 0);
+                        = transform.localPosition + new Vector3(-0.87f, 0.33f, 0);
                 else
                     attackEffect.transform.localPosition
-                        = new Vector3(0.87f, 0.33f, 0);
+                        = transform.localPosition + new Vector3(0.87f, 0.33f, 0);
             }
         }
         public void SkillAttackHit()
@@ -88,7 +88,7 @@ namespace lws
             skillEffect.SetActive(true);
 
             skillEffect.transform.localPosition 
-                = new Vector3(0, 0.33f, 0);
+                = transform.localPosition + new Vector3(0, 0.33f, 0);
 
             if (playerSpriteRenderer.flipX)
                 skillEffect.transform.rotation 
