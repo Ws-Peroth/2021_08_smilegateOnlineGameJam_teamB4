@@ -878,7 +878,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: How  to
+  m_Text: How to
 --- !u!222 &714541637
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1267,7 +1267,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Howto
+  m_Text: How to
 --- !u!222 &1161628003
 CanvasRenderer:
   m_ObjectHideFlags: 0
