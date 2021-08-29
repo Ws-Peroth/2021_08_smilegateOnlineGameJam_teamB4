@@ -173,6 +173,7 @@ namespace lws
         {
             gameObject.SetActive(false);
             hpBar.gameObject.SetActive(false);
+            SceneController.instance.SceneChange(SceneController.currentScene);
         }
     }
 }

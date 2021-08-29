@@ -2,48 +2,58 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pause : MonoBehaviour
+namespace lws
 {
-    public GameObject screen;
-    public GameObject howto;
-
-    private void Start()
+    public class Pause : MonoBehaviour
     {
-        howto.SetActive(false);
-    }
+        public GameObject screen;
+        public GameObject howto;
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        private void Start()
         {
-            if (!screen.activeSelf)
-                OpenScreen();
-            else 
-                CloseScreen();
+            howto.SetActive(false);
         }
-    }
 
-    public void OpenScreen()
-    {
-        Time.timeScale = 0;
-        screen.SetActive(true);
-    }
+        // Update is called once per frame
+        void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                if (!screen.activeSelf)
+                    OpenScreen();
+                else
+                    CloseScreen();
+            }
+        }
 
-    public void CloseScreen()
-    {
-        Time.timeScale = 1;
-        howto.SetActive(false);
-        screen.SetActive(false);
-    }
+        public void OpenScreen()
+        {
+            Time.timeScale = 0;
+            screen.SetActive(true);
+        }
 
-    public void OpenHowto()
-    {
-        howto.SetActive(true);
-    }
+        public void CloseScreen()
+        {
+            Time.timeScale = 1;
+            howto.SetActive(false);
+            screen.SetActive(false);
+        }
 
-    public void CloseHowto()
-    {
-        howto.SetActive(false);
+        public void OpenHowto()
+        {
+            howto.SetActive(true);
+        }
+
+        public void CloseHowto()
+        {
+            howto.SetActive(false);
+        }
+
+        public void GotoMenu()
+        {
+            Debug.Log("clicked");
+            Time.timeScale = 1;
+            SceneController.instance.SceneChange(Scenes.Openning);
+        }
     }
 }
