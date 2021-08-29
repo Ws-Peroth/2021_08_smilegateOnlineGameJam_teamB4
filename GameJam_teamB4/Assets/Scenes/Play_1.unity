@@ -27459,6 +27459,14 @@ PrefabInstance:
       propertyPath: power
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 1113814722189763925, guid: 11b34c4897138ab4c96ffb0976dc6868, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1113814722189763927, guid: 11b34c4897138ab4c96ffb0976dc6868, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7452223979688330778, guid: 11b34c4897138ab4c96ffb0976dc6868, type: 3}
       propertyPath: m_RootOrder
       value: 9

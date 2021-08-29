@@ -12,9 +12,21 @@ EditorBuildSettings:
     path: Assets/Scenes/loading.unity
     guid: 2f663cd56b3e6dd4da08c37fe30850b5
   - enabled: 1
-    path: Assets/Scenes/PlayScene.unity
-    guid: f665756608ea0614182fb093bf82a10d
-  - enabled: 1
     path: Assets/Scenes/Play_1.unity
     guid: 78c5a0a91bc75394aae2f28ff73a4b38
+  - enabled: 1
+    path: Assets/Scenes/Play_2.unity
+    guid: f053a55b3c1632345bea3c5d8079ea7d
+  - enabled: 1
+    path: Assets/Scenes/Play_3.unity
+    guid: 36a2b6f5d216f1442baffa9b41e9c77d
+  - enabled: 1
+    path: Assets/Scenes/Play_4.unity
+    guid: e744074aee816534780b01e28c33bfdb
+  - enabled: 1
+    path: Assets/Scenes/Play_5.unity
+    guid: 32d583a2f68a2c94a85f70c619a8ef40
+  - enabled: 1
+    path: Assets/Scenes/StroyScene.unity
+    guid: eba85b801fcc5b841a9e755fc49908fc
   m_configObjects: {}
