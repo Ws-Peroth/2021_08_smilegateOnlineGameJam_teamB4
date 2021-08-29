@@ -6,6 +6,8 @@ namespace lws
 {
     public class Menu : MonoBehaviour
     {
+        public GameObject howtoPanel;
+
         // Start is called before the first frame update
         void Start()
         {
@@ -16,16 +18,19 @@ namespace lws
         {
             SceneController.instance.SceneChange(Scenes.Floor1);
         }
-        public void OptionButton()
+        public void HowtoButton()
         {
-
+            howtoPanel.SetActive(true);
         }
         public void ExitButton()
         {
 
         }
 
-
+        public void HowToEsc()
+        {
+            howtoPanel.SetActive(false);
+        }
 
     }
 }
