@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 
 namespace lws {
 
-    public class TalkSystem : MonoBehaviour
+    public class OpenStroy : MonoBehaviour
     {
         [SerializeField] private GameObject obj;
         [SerializeField] private Text speakerName;
@@ -20,7 +20,7 @@ namespace lws {
         private TalkInformation temp;
         private IEnumerator showCharWithDelayCoroutine;
         private bool isShowing;
-        private string[] names = { "플레이어", "그녀", "???" };
+        private string[] names = { "플레이어", "그녀", "???", " " };
         public bool isEnd;
 
         private void Start()
@@ -29,10 +29,8 @@ namespace lws {
             isShowing = false;
             charDelay = 0.05f;
             
-            var loadJson = Resources.Load("Dialogue") as TextAsset;
+            var loadJson = Resources.Load("Stroy") as TextAsset;
             talks = JsonConvert.DeserializeObject<Queue<TalkInformation>>(loadJson.ToString());
-
-            Invoke(nameof(GetStartSignal), 1f);
             
         }
 
@@ -44,7 +42,7 @@ namespace lws {
                 GetStartSignal();
         }
 
-        private void GetStartSignal()
+        public void GetStartSignal()
         {
             obj.SetActive(true);
             if (talks.Count > 0)
