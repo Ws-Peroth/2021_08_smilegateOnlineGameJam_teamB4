@@ -9,6 +9,7 @@ namespace lws {
 
     public class TalkSystem : MonoBehaviour
     {
+        [SerializeField] private GameObject obj;
         [SerializeField] private Text speakerName;
         [SerializeField] private Text dialogue;
         [SerializeField] private Sprite[] speakerSprites;
@@ -20,15 +21,19 @@ namespace lws {
         private IEnumerator showCharWithDelayCoroutine;
         private bool isShowing;
         private string[] names = { "AAA", "BBB"};
+
+        public bool isEnd;
+
         private void Start()
         {
+            isEnd = false;
             isShowing = false;
             charDelay = 0.05f;
             
             var loadJson = Resources.Load("Dialogue") as TextAsset;
             talks = JsonConvert.DeserializeObject<Queue<TalkInformation>>(loadJson.ToString());
 
-            GetStartSignal();
+            Invoke(nameof(GetStartSignal), 1f);
             
         }
 
@@ -42,7 +47,8 @@ namespace lws {
 
         private void GetStartSignal()
         {
-            if(talks.Count > 0)
+            obj.SetActive(true);
+            if (talks.Count > 0)
             {
                 temp = talks.Dequeue();
                 speakerName.text = names[temp.member];
@@ -60,7 +66,7 @@ namespace lws {
 
         public void TalkEnd()
         {
-            Debug.Log("Talk End");
+            isEnd = true;
             gameObject.SetActive(false);
         }
 
