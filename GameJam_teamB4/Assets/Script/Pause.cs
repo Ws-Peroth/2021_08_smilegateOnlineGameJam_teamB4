@@ -5,10 +5,11 @@ using UnityEngine;
 public class Pause : MonoBehaviour
 {
     public GameObject screen;
+    public GameObject howto;
 
-    void Start()
+    private void Start()
     {
-        
+        howto.SetActive(false);
     }
 
     // Update is called once per frame
@@ -32,6 +33,17 @@ public class Pause : MonoBehaviour
     public void CloseScreen()
     {
         Time.timeScale = 1;
+        howto.SetActive(false);
         screen.SetActive(false);
+    }
+
+    public void OpenHowto()
+    {
+        howto.SetActive(true);
+    }
+
+    public void CloseHowto()
+    {
+        howto.SetActive(false);
     }
 }
