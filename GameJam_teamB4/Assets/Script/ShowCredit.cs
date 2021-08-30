@@ -67,7 +67,7 @@ namespace lws
             while (covi.color.a < 1)
             {
                 Color c = covi.color;
-                c.a += 0.0003f;
+                c.a += 0.001f;
                 covi.color = c;
                 yield return null;
             }

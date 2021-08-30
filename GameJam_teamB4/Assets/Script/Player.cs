@@ -27,8 +27,8 @@ namespace lws
             base.Start();
             hpBar.gameObject.SetActive(true);
 
-            skillDmg = 30;
-            attackDmg = 10;
+            skillDmg = 100;
+            attackDmg = 100;
 
             isAttack = false;
             isSkill = false;

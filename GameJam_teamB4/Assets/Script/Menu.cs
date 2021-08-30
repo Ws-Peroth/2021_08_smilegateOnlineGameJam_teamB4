@@ -22,6 +22,7 @@ namespace lws
         // Start is called before the first frame update
         void Start()
         {
+
             storyBGImage.color = new Color(1, 1, 1, 0);
             skyBGImage.color = new Color(1, 1, 1, 0);
 
@@ -46,8 +47,8 @@ namespace lws
                 Color c = storyBGImage.color;
                 Color c2 = skyBGImage.color;
 
-                c.a += 0.003f;
-                c2.a += 0.003f;
+                c.a += 0.006f;
+                c2.a += 0.006f;
 
                 storyBGImage.color = c;
                 skyBGImage.color = c2;
