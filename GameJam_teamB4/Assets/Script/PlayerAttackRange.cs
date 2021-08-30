@@ -9,6 +9,7 @@ namespace lws
         [SerializeField] private Player player;
 
         public bool attackDelayOn;
+        [SerializeField] private bool monsterInRange;
 
         private void Start()
         {
@@ -38,10 +39,21 @@ namespace lws
 
             if (collision.gameObject.CompareTag("Enemy"))
             {
+                monsterInRange = true;
                 Debug.Log("Effect On");
-                player.OnAttackRange(collision);
+                player.attackEnemy = collision;
+                // player.OnAttackRange(collision);
+            }
+            else
+            {
+                monsterInRange = false;
             }
 
+        }
+
+        private void OnTriggerExit2D(Collider2D collision)
+        {
+            player.attackEnemy = null;
         }
     }
 }

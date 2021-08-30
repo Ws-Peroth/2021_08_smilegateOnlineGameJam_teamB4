@@ -50,7 +50,11 @@ public class WordUI : MonoBehaviour
     public void getWord(int index)
     {
         if (words[index].activeSelf)
+        {
+            words[index].SetActive(false);
+            words[index].SetActive(true);
             return;
+        }
 
         words[index].SetActive(true);
         wordCount++;

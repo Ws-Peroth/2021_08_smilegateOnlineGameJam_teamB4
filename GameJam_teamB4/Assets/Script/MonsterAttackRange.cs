@@ -5,6 +5,7 @@ using UnityEngine;
 public class MonsterAttackRange : MonoBehaviour
 {
     public Monster monster;
+    public Collider2D target;
     private bool attackDelayOn;
 
     // Start is called before the first frame update
@@ -17,32 +18,36 @@ public class MonsterAttackRange : MonoBehaviour
     void Update()
     {
         SetRange();
+
+        if (!attackDelayOn && target != null)
+        {
+            Debug.Log("Find Player");
+            attackDelayOn = true;
+            monster.OnAttackRange(target);
+
+            StartCoroutine(DelayFinish());
+        }
     }
 
     private void SetRange()
     {
         if (monster.dir.x >= 0)
         {
-            transform.localPosition = new Vector3(1.25f, 0, 0);
+            transform.localPosition = new Vector3(0.33f, 0, 0);
         }
         else
         {
-            transform.localPosition = new Vector3(0, 0, 0);
+            transform.localPosition = new Vector3(-0.33f, 0, 0);
         }
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (!attackDelayOn)
         {
             if (collision.gameObject.CompareTag("Player"))
             {
-                attackDelayOn = true;
-
-                Debug.Log("Find Player");
-                monster.OnAttackRange(collision);
-
-                StartCoroutine(DelayFinish());
+                target = collision;
             }
         }
     }
@@ -57,6 +62,7 @@ public class MonsterAttackRange : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            target = null;
             monster.target = null;
             //CancelInvoke("Shoot");
             monster.Think();

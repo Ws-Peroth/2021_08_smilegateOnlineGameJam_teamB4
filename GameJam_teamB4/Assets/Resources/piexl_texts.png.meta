@@ -1,31 +1,16 @@
 fileFormatVersion: 2
-guid: df31bc19dce3b6f40850079e990b8e50
+guid: ebdbc02fec5a33b43a61519f35f85878
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 559968885393372358
-    second: player_Wait_0
+      213: 7665931426391074323
+    second: piexl_texts_0
   - first:
-      213: -8008095923868560233
-    second: player_Wait_1
+      213: -7601270275916572274
+    second: piexl_texts_1
   - first:
-      213: 3805602375281750233
-    second: player_Wait_2
-  - first:
-      213: -2985382938725255309
-    second: player_Wait_3
-  - first:
-      213: -521696564843339717
-    second: player_Wait_4
-  - first:
-      213: -388016257942202922
-    second: player_Wait_5
-  - first:
-      213: -3746067242228062818
-    second: player_Wait_6
-  - first:
-      213: -7369792746508074899
-    second: player_Wait_7
+      213: 3264885582001807615
+    second: piexl_texts_2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -70,7 +55,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 50
+  spritePixelsToUnits: 8
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -139,13 +124,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: player_Wait_0
+      name: piexl_texts_0
       rect:
         serializedVersion: 2
-        x: 90
-        y: 40
-        width: 32
-        height: 102
+        x: 0
+        y: 16
+        width: 40
+        height: 8
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,20 +138,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6c4b4230cb865c700800000000000000
-      internalID: 559968885393372358
+      spriteID: 3162b86340cd26a60800000000000000
+      internalID: 7665931426391074323
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_Wait_1
+      name: piexl_texts_1
       rect:
         serializedVersion: 2
-        x: 262
-        y: 40
-        width: 32
-        height: 102
+        x: 0
+        y: 8
+        width: 40
+        height: 8
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -174,20 +159,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7949f8a9f278dd090800000000000000
-      internalID: -8008095923868560233
+      spriteID: e89d14215fcd28690800000000000000
+      internalID: -7601270275916572274
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_Wait_2
+      name: piexl_texts_2
       rect:
         serializedVersion: 2
-        x: 438
-        y: 40
-        width: 32
-        height: 106
+        x: 0
+        y: 0
+        width: 40
+        height: 8
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -195,113 +180,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9d03d07823730d430800000000000000
-      internalID: 3805602375281750233
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: player_Wait_3
-      rect:
-        serializedVersion: 2
-        x: 616
-        y: 40
-        width: 32
-        height: 106
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 377f4c2d80ac196d0800000000000000
-      internalID: -2985382938725255309
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: player_Wait_4
-      rect:
-        serializedVersion: 2
-        x: 798
-        y: 40
-        width: 32
-        height: 110
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b30a8f30dbf82c8f0800000000000000
-      internalID: -521696564843339717
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: player_Wait_5
-      rect:
-        serializedVersion: 2
-        x: 1018
-        y: 40
-        width: 32
-        height: 106
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6d5574ae44d7d9af0800000000000000
-      internalID: -388016257942202922
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: player_Wait_6
-      rect:
-        serializedVersion: 2
-        x: 1220
-        y: 40
-        width: 32
-        height: 106
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e95e442d0bb430cc0800000000000000
-      internalID: -3746067242228062818
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: player_Wait_7
-      rect:
-        serializedVersion: 2
-        x: 1426
-        y: 40
-        width: 32
-        height: 102
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d60c22c3b8c39b990800000000000000
-      internalID: -7369792746508074899
+      spriteID: ff0238383243f4d20800000000000000
+      internalID: 3264885582001807615
       vertices: []
       indices: 
       edges: []

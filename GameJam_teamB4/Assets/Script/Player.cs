@@ -15,6 +15,8 @@ namespace lws
         [SerializeField] private GameObject attackEffect;
         [SerializeField] private AudioSource audioSource;
 
+        public Collider2D attackEnemy;
+
         public int skillDmg;
         public int attackDmg;
         public bool isHit;
@@ -27,13 +29,13 @@ namespace lws
             base.Start();
             hpBar.gameObject.SetActive(true);
 
-            skillDmg = 100;
-            attackDmg = 100;
+            skillDmg = 10;
+            attackDmg = 10;
 
             isAttack = false;
             isSkill = false;
             isHit = false;
-            hp = 100;
+            hp = 100000000;
         }
 
         public void Update()
@@ -61,6 +63,10 @@ namespace lws
                 Debug.Log("Call Effect : Attack");
                 playerAnimator.SetBool("isAttack", true);
                 audioSource.Play();
+                if (attackEnemy != null)
+                {
+                    OnAttackRange(attackEnemy);
+                }
             }
             if (isAttack)
             {
@@ -77,6 +83,10 @@ namespace lws
                 Debug.Log("Call Effect : Skill");
                 playerAnimator.SetBool("isSkill", true);
                 audioSource.Play();
+                if(attackEnemy != null)
+                {
+                    OnAttackRange(attackEnemy);
+                }
             }
             if (isSkill)
             {

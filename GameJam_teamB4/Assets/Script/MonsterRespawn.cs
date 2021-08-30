@@ -36,10 +36,13 @@ public class MonsterRespawn : MonoBehaviour
         if (pos.childCount > 1)
             yield break;
 
-        GameObject newMonster = Instantiate(monsters[getMonsterIndex()]);
-        newMonster.transform.parent = pos;
-        newMonster.transform.position = pos.position;
-        newMonster.SetActive(true);
+
+        Instantiate( 
+            monsters[getMonsterIndex()],
+            pos.position + new Vector3(0, 1, 0),
+            Quaternion.identity, pos
+            ).SetActive(true);
+
     }
 
     int getMonsterIndex()

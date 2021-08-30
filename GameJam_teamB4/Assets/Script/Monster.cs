@@ -35,7 +35,7 @@ public class Monster : MonoBehaviour
         HpObjLength = HpObj.transform.localScale.x;
     }
 
-    // Update is called once per frame
+
     void FixedUpdate()
     {
         //checkFront();
@@ -110,13 +110,6 @@ public class Monster : MonoBehaviour
 
         Debug.Log($"{gameObject.name} : Get Dmg");
 
-        nowHp -= damage;
-        Vector3 scale = HpObj.transform.localScale;
-        scale.x -= (HpObjLength / hp) * damage;
-        if (scale.x <= 0)
-            scale.x = 0.1f;
-        HpObj.transform.localScale = scale;
-
         if (hp <= 0)
         {
             // 50% È®·ü·Î ±ÛÀÚ Å‰µæ.
@@ -128,6 +121,16 @@ public class Monster : MonoBehaviour
             respawn.respawnMonster(this.transform.parent);
             Destroy(this.gameObject);
         }
+
+        Vector3 scale = HpObj.transform.localScale;
+
+        scale.x -= (HpObjLength / hp) * damage;
+        
+        if (scale.x <= 0)
+            scale.x = 0.1f;
+        
+        HpObj.transform.localScale = scale;
+
     }
 
     public void OnAttackRange(Collider2D player)
