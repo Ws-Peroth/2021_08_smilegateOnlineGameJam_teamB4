@@ -6,4 +6,4 @@
 - 사용 엔진 : Unity Engine 2D (2020.3.15f2)
 - 예상 플레이 시간 : 5 ~ 10분
 # 게임 주제 : 여름이었다
-# [인게임 소개](https://github.com/)
+# [인게임 소개](https://github.com/Ws-Peroth/2021_08_smilegateOnlineGameJam_teamB4/blob/main/InGame.md)
