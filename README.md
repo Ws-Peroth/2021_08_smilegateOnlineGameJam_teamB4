@@ -13,7 +13,7 @@
 Unity Engine (2020.3.15f2)
 
 # 게임 실행 방법
-`Releases`에 올라가 있는 최신버전의 파일 (2021.08.31 KST 기준 최신 버전 : ReleaseVer_1.0.zip)을 다운로드 받습니다.
+`Releases`에 올라가 있는 최신버전의 파일 (2021.08.31 17:10:00 KST 기준 최신 버전 : ReleaseVer_1.0.zip)을 다운로드 받습니다.
 그 후, `ReleaseVer_1.0/To Get Her.exe` 을 실행하여 게임을 플레이 합니다.
 
 
