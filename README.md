@@ -19,5 +19,6 @@ Unity Engine (2020.3.15f2)
 
 # [게임 소개](https://github.com/Ws-Peroth/2021_08_smilegateOnlineGameJam_teamB4/blob/main/AboutGame.md)
 
-# [게임잼 제출 링크](https://page.onstove.com/indie/global/view/7670423)
+##### 외부 링크
+[게임잼 제출 링크](https://page.onstove.com/indie/global/view/7670423)
 
