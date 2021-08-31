@@ -71,9 +71,10 @@ namespace lws {
 
         private void GetSkipSignal()
         {
-            StopCoroutine(showCharWithDelayCoroutine);
-            dialogue.text = temp.txt;
+            Debug.Log("Clicked");
             isShowing = false;
+            dialogue.text = temp.txt;
+            StopCoroutine(showCharWithDelayCoroutine);
         }
 
         private IEnumerator ShowChar(string txt)
@@ -84,6 +85,11 @@ namespace lws {
 
             for(int i = 0; i < txt.Length; i++)
             {
+                if (!isShowing)
+                {
+                    yield break;
+                }
+
                 dialogue.text += txt[i];
                 yield return new WaitForSeconds(charDelay);
             }
