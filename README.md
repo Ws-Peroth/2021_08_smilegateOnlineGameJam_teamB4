@@ -16,4 +16,4 @@ Unity Engine (2020.3.15f2)
 그 후, `ReleaseVer_1.0/To Get Her.exe` 을 실행하여 게임을 플레이 합니다.
 
 
-# [게임 소개](https://github.com/)
+# [게임 소개](https://github.com/Ws-Peroth/2021_08_smilegateOnlineGameJam_teamB4/blob/main/AboutGame.md)
