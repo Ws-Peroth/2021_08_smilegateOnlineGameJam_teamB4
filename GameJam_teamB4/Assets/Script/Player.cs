@@ -29,13 +29,25 @@ namespace lws
             base.Start();
             hpBar.gameObject.SetActive(true);
 
-            skillDmg = 10;
-            attackDmg = 10;
+            StartCoroutine(HpRegeneration());
+
+            skillDmg = 40;
+            attackDmg = 20;
 
             isAttack = false;
             isSkill = false;
             isHit = false;
-            hp = 100000000;
+            hp = 100;
+        }
+
+        private IEnumerator HpRegeneration()
+        {
+            while (true)
+            {
+                hp += 2f;
+                if (hp >= 100) hp = 100;
+                yield return new WaitForSeconds(2);
+            }
         }
 
         public void Update()
@@ -58,7 +70,9 @@ namespace lws
         {
             if (!isAttack && Input.GetKey(KeyCode.Z))
             {
+
                 isAttack = true;
+                playerRigidbody.AddForce(Vector3.right * (playerSpriteRenderer.flipX ? -100 : 100));
 
                 Debug.Log("Call Effect : Attack");
                 playerAnimator.SetBool("isAttack", true);
@@ -80,6 +94,7 @@ namespace lws
             if (!isSkill && Input.GetKey(KeyCode.X))
             {
                 isSkill = true;
+                playerRigidbody.AddForce(Vector3.right * (playerSpriteRenderer.flipX ? -100 : 100));
                 Debug.Log("Call Effect : Skill");
                 playerAnimator.SetBool("isSkill", true);
                 audioSource.Play();

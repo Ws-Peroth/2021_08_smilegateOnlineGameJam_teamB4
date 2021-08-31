@@ -49,11 +49,14 @@ public class WordUI : MonoBehaviour
 
     public void getWord(int index)
     {
+        Debug.Log("Get Word");
+
         if (words[index].activeSelf)
         {
-            words[index].SetActive(false);
-            words[index].SetActive(true);
-            return;
+            for(int i = 0; i < words.Length; i++)
+            {
+                if (!(words[i].activeSelf)) index = i;
+            }
         }
 
         words[index].SetActive(true);

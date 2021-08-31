@@ -34,7 +34,7 @@ namespace lws
         {
             playerRigidbody.gravityScale = downSpeed;
 
-            if (Input.GetKeyDown(KeyCode.UpArrow) && isGround)
+            if ( (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.Space)) && isGround)
             {
                 playerAnimator.SetBool("isMove", false);
 
